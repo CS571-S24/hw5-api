@@ -1,6 +1,8 @@
 import fs from 'fs'
 
 import express, { Express } from 'express';
+import cookies from "cookie-parser";
+
 
 import { CS571DefaultSecretConfig, CS571Initializer } from '@cs571/s24-api-framework'
 import HW5PublicConfig from './model/configs/hw5-public-config';
@@ -10,6 +12,7 @@ import { CS571BudsRoute } from './routes/buds';
 console.log("Welcome to HW5!");
 
 const app: Express = express();
+app.use(cookies());
 
 const appBundle = CS571Initializer.init<HW5PublicConfig, CS571DefaultSecretConfig>(app, {
   allowNoAuth: [],
